@@ -14,6 +14,7 @@ pageextension 50100 CustomerCardBookExtension extends "Customer Card"
                 ApplicationArea = All;
             }
         }
+        
 
        
     }
