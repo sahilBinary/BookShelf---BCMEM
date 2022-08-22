@@ -6,7 +6,7 @@ codeunit 50110 functions
     begin
         
         if myInt < 0 then begin
-            Message('The Number %1 is not a valid input', myInt);
+            Message('The Number %1 is not a valid input', myInt);           
         end;
         
         if (myInt mod 2 = 0) then begin

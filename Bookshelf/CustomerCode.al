@@ -10,15 +10,7 @@ codeunit 50100 CustomerCode
     [EventSubscriber(ObjectType::Table, Database::Customer, 'OnAfterInsertEvent', '', true, true)]
     local procedure MyProcedure(Rec: Record Customer)
     begin
-        CelebrateCustomer(Rec, 'Congrats from the codeunit');
+        CelebrateCustomer(Rec, 'Congrats from codeunit 50100');
     end;
 
 }
-
-
-//data types
-//arithmatics with data types
-//Control flow statements
-//arrays
-//loops
-//functions, methods, return types
