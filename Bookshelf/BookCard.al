@@ -20,6 +20,8 @@ page 50100 BookCard
                 {
                     ApplicationArea = All;
                 }
+
+
             }
 
             group(Details)

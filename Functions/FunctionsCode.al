@@ -8,13 +8,13 @@ codeunit 50110 functions
         if myInt < 0 then begin
             Message('The Number %1 is not a valid input', myInt);
         end;
+        
         if (myInt mod 2 = 0) then begin
             Message('The Number %1 is Even', myInt);
         end else begin
             Message('The Number %1 is Odd', myInt);
         end;
     end;
-
 
 
     procedure checkPrime(myInt: Integer)

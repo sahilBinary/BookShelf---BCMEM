@@ -2,6 +2,8 @@ page 50101 BookList
 {
     PageType = List;
     SourceTable = Book;
+    UsageCategory = Administration;
+    ApplicationArea = All;
     Editable = false;
     CardPageId = BookCard;
     
