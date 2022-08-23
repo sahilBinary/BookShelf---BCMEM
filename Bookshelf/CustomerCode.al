@@ -5,8 +5,7 @@ codeunit 50100 CustomerCode
         Message('Whoa!!  We have a new Customer %1!!\\%2', MyCustomer."No.", ExtraMessage);
     end;
 
-
-
+    //hello
     [EventSubscriber(ObjectType::Table, Database::Customer, 'OnAfterInsertEvent', '', true, true)]
     local procedure MyProcedure(Rec: Record Customer)
     begin
