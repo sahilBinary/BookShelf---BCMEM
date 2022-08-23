@@ -6,7 +6,7 @@ page 50105 FunctionsCard
     SourceTable = Functions;
 
     layout
-    {
+    { ///
         area(Content)
         {
             group(General)
