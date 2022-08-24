@@ -1,6 +1,6 @@
 {
   "id": "aa0cef15-9b0d-42dd-89bf-3e7c448ae9b1",
-  "name": "Awesome Book Shelf",
+  "name": "Book Shelf",
   "publisher": "sahilBinary",
   "version": "1.0.0.0",
   "brief": "",
@@ -9,7 +9,7 @@
   "EULA": "",
   "help": "",
   "url": "",
-  "logo": "",
+  "logo": "Pictures/book.jpg",
   "dependencies": [],
   "screenshots": [],
   "platform": "1.0.0.0",

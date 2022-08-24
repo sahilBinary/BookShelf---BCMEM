@@ -1,19 +1,8 @@
-
-// This table is not needed for the code to work. I made another table "Data" and removed the fields that are not required.
-table 50116 Functions
+table 50117 Data
 {
     DataClassification = ToBeClassified;
     fields
     {
-        field(1; FID; Code[20])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(2; Function; Text[50])
-        {
-            DataClassification = ToBeClassified;
-        }
-
         field(3; "Number 1"; Integer)
         {
             DataClassification = ToBeClassified;
@@ -25,13 +14,6 @@ table 50116 Functions
         field(5; "Number 3"; Integer)
         {
             DataClassification = ToBeClassified;
-        }
-    }
-    keys
-    {
-        key(PK; FID)
-        {
-            Clustered = true;
         }
     }
 

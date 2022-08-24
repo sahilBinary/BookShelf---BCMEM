@@ -26,17 +26,10 @@ page 50111 BookList
                 {
                     ApplicationArea = All;
                 }
-                field(Hardover; Rec.Hardcover)
-                {
-                    caption = 'Hardcover';
-                }
-
                 field("Page Count"; Rec."Page Count")
                 {
                     caption = 'Page Count';
                 }
-
-
             }
         }
 

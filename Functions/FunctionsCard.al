@@ -1,9 +1,11 @@
 page 50115 FunctionsCard
 {
+    Caption = 'Functions';
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = Functions;
+    //SourceTable = Functions;
+    SourceTable = Data;
 
     layout
     {
