@@ -1,14 +1,12 @@
-codeunit 50111 functions
+codeunit 50101 functions
 {
-
-
     procedure checkNumber(myInt: Integer)
     begin
-        
+
         if myInt < 0 then begin
-            Message('The Number %1 is not a valid input', myInt);           
+            Message('The Number %1 is not a valid input', myInt);
         end;
-        
+
         if (myInt mod 2 = 0) then begin
             Message('The Number %1 is Even', myInt);
         end else begin
@@ -120,4 +118,12 @@ codeunit 50111 functions
 
     end;
 
+    procedure DaysInMonth(InputMonth: Integer; InputYear: Integer)
+    var
+        NoOfDays: Integer;
+    begin
+        //can also just use the TODAY keyword
+        NoOfDays := Date2DMY(CalcDate('CM', DMY2Date(01, InputMonth, InputYear)), 1);
+        Message('Month No %1 of year %2 has %3 days', InputMonth, InputYear, NoOfDays);
+    end;
 }

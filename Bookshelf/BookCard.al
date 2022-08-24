@@ -1,4 +1,4 @@
-page 50110 BookCard
+page 50100 BookCard
 {
     PageType = Card;
     ApplicationArea = All;

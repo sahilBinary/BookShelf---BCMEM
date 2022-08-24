@@ -1,20 +1,29 @@
-table 50117 Data
+table 50102 Data
 {
     DataClassification = ToBeClassified;
     fields
     {
-        field(3; "Number 1"; Integer)
+        field(1; "Number 1"; Integer)
         {
             DataClassification = ToBeClassified;
         }
-        field(4; "Number 2"; Integer)
+        field(2; "Number 2"; Integer)
         {
             DataClassification = ToBeClassified;
         }
-        field(5; "Number 3"; Integer)
+        field(3; "Number 3"; Integer)
         {
             DataClassification = ToBeClassified;
         }
+        field(4; "Month"; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(5; "Year"; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+
     }
 
     protected var
@@ -50,6 +59,10 @@ table 50117 Data
         Codes.checkGreater("Number 1", "Number 2", "Number 3");
     end;
 
+    procedure DaysInMonth()
+    begin
+        Codes.DaysInMonth(Month,Year);
+    end;
 
 }
 

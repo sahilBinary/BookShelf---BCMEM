@@ -1,4 +1,4 @@
-page 50115 FunctionsCard
+page 50104 FunctionsCard
 {
     Caption = 'Functions';
     PageType = Card;
@@ -26,6 +26,14 @@ page 50115 FunctionsCard
                 field("Number 3"; Rec."Number 3")
                 {
                     //Caption = 'Fill this field if you want to use the "Greater of the three" action';
+                    ApplicationArea = All;
+                }
+                field("Month"; Rec.Month)
+                {
+                    ApplicationArea = All;
+                }
+                field("year"; Rec.Year)
+                {
                     ApplicationArea = All;
                 }
             }
@@ -90,13 +98,13 @@ page 50115 FunctionsCard
                     Rec.SwapNumbers();
                 end;
             }
-            action("Counter")
+            action("Days in a Month")
             {
                 ApplicationArea = All;
 
                 trigger OnAction()
                 begin
-                    Codeunit.Run(50109);
+                    Rec.DaysInMonth();
                 end;
             }
 

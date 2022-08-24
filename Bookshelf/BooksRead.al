@@ -1,4 +1,4 @@
-table 50119 BooksRead
+table 50101 BooksRead
 {
     Caption = 'Books Read';
     DataClassification = ToBeClassified;

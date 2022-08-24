@@ -1,4 +1,4 @@
-pageextension 50110 CustomerCardBookExtension extends "Customer Card"
+pageextension 50100 CustomerCardBookExtension extends "Customer Card"
 {
     layout
     {

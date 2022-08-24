@@ -1,4 +1,4 @@
-page 50120 BookReadList
+page 50103 BookReadList
 {
     Caption = 'Books Read Record';
     PageType = ListPart;
