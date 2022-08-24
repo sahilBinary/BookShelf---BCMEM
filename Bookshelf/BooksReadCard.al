@@ -1,9 +1,10 @@
-page 50110 BookCard
+page 50121 BooksReadCard
 {
+    Caption = 'Books Read';
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = Book;
+    SourceTable = BooksRead;
 
     layout
     {
@@ -16,38 +17,22 @@ page 50110 BookCard
                 {
                     ApplicationArea = All;
                 }
-                field(Title; Rec.Title)
+                field("Person ID"; Rec."Person ID")
                 {
                     ApplicationArea = All;
                 }
 
-
-            }
-
-            group(Details)
-            {
-                Caption = 'Details';
-                field(Author; Rec.Author)
+                field("Time To Read"; Rec."Time to Read")
                 {
                     ApplicationArea = All;
-
-                }
-                field(Hardcover; Rec.Hardcover)
-                {
-                    ApplicationArea = All;
-
-                }
-                field("Page Count"; Rec."Page Count")
-                {
-                    ApplicationArea = All;
-
                 }
             }
 
         }
-    }
 
+    }
 }
 
 
-  
+
+

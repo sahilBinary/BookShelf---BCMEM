@@ -1,4 +1,4 @@
-tableextension 50100 CustomerBookExtension extends Customer
+tableextension 50110 CustomerBookExtension extends Customer
 {
     fields
     {
@@ -9,6 +9,20 @@ tableextension 50100 CustomerBookExtension extends Customer
             DataClassification = ToBeClassified;
         }
 
+        field(50101; "Total Books Read"; Integer)
+        {
+            //flow field calculate using booksread table
+            FieldClass = FlowField;
+            CalcFormula = count(BooksRead where("Person ID" = FIELD("No.")));
+
+        }
+        field(50102; "Total Reading Time"; Duration)
+        {
+            //flow field calculate using booksread table
+            FieldClass = FlowField;
+            CalcFormula = sum(BooksRead."Time to Read" where("Person ID" = FIELD("No.")));
+
+        }
         field(50116; ShoeSize; Integer)
         {
             trigger OnValidate();

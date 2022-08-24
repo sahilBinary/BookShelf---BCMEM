@@ -1,4 +1,4 @@
-table 50100 Book
+table 50110 Book
 {
     DataClassification = ToBeClassified;
 

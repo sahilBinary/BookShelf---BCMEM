@@ -1,4 +1,4 @@
-page 50105 FunctionsCard
+page 50115 FunctionsCard
 {
     PageType = Card;
     ApplicationArea = All;
@@ -6,7 +6,7 @@ page 50105 FunctionsCard
     SourceTable = Functions;
 
     layout
-    { ///
+    {
         area(Content)
         {
             group(General)

@@ -1,13 +1,13 @@
-page 50111 BookList
+page 50120 BookReadList
 {
-    Caption = 'Book List';
+    Caption = 'Books Read Record';
     PageType = List;
-    SourceTable = Book;
+    SourceTable = BooksRead;
     UsageCategory = Administration;
     ApplicationArea = All;
     Editable = false;
-    CardPageId = BookCard;
-
+    CardPageId = BooksReadCard;
+    
     layout
     {
         area(Content)
@@ -18,30 +18,21 @@ page 50111 BookList
                 {
                     ApplicationArea = All;
                 }
-                field(Title; Rec.Title)
+                field("Person ID";Rec."Person ID")
                 {
                     ApplicationArea = All;
                 }
-                field(Author; Rec.Author)
+                field("Time to Read";Rec."Time to Read")
                 {
                     ApplicationArea = All;
                 }
-                field(Hardover; Rec.Hardcover)
-                {
-                    caption = 'Hardcover';
-                }
-
-                field("Page Count"; Rec."Page Count")
-                {
-                    caption = 'Page Count';
-                }
-
+                
 
             }
         }
 
     }
-
-
+    
+    
 }
 

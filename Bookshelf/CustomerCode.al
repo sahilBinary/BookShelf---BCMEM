@@ -1,4 +1,4 @@
-codeunit 50100 CustomerCode
+codeunit 50110 CustomerCode
 {
     procedure CelebrateCustomer(MyCustomer: Record Customer; ExtraMessage: Text)
     begin
