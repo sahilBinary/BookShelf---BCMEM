@@ -1,7 +1,7 @@
 page 50120 BookReadList
 {
     Caption = 'Books Read Record';
-    PageType = List;
+    PageType = ListPart;
     SourceTable = BooksRead;
     UsageCategory = Administration;
     ApplicationArea = All;
@@ -35,4 +35,5 @@ page 50120 BookReadList
     
     
 }
+
 

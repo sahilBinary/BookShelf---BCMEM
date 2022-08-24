@@ -11,16 +11,6 @@ page 50115 FunctionsCard
         {
             group(General)
             {
-                field(FID; Rec.FID)
-                {
-
-                    ApplicationArea = All;
-
-                }
-                field(Function; Rec.Function)
-                {
-                    ApplicationArea = All;
-                }
                 field("Number 1"; Rec."Number 1")
                 {
                     //Caption = 'Always fill this field';
@@ -50,7 +40,7 @@ page 50115 FunctionsCard
 
                 trigger OnAction()
                 begin
-                    rec.IsEvenorOdd();
+                    Rec.IsEvenorOdd();
                 end;
             }
             action("Check Prime")
@@ -59,7 +49,7 @@ page 50115 FunctionsCard
 
                 trigger OnAction()
                 begin
-                    rec.CheckifPrime();
+                    Rec.CheckifPrime();
                 end;
             }
             action("Greater of the three")
@@ -68,7 +58,7 @@ page 50115 FunctionsCard
 
                 trigger OnAction()
                 begin
-                    rec.GreaterNumber();
+                    Rec.GreaterNumber();
                 end;
             }
             action("Odd Series")
@@ -77,7 +67,7 @@ page 50115 FunctionsCard
 
                 trigger OnAction()
                 begin
-                    rec.OddSeries();
+                    Rec.OddSeries();
                 end;
             }
             action("Reverse Number")
@@ -86,7 +76,7 @@ page 50115 FunctionsCard
 
                 trigger OnAction()
                 begin
-                    rec.ReverseNumber();
+                    Rec.ReverseNumber();
                 end;
             }
             action("Swap Numbers")
@@ -95,7 +85,7 @@ page 50115 FunctionsCard
 
                 trigger OnAction()
                 begin
-                    rec.SwapNumbers();
+                    Rec.SwapNumbers();
                 end;
             }
             action("Counter")
@@ -110,8 +100,6 @@ page 50115 FunctionsCard
 
         }
     }
-
-
 
 }
 
