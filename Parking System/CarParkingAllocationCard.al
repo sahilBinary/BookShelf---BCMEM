@@ -18,7 +18,7 @@ page 50106 "Car Parking Allocation"
                     TableRelation = "Car Master";
                     trigger OnValidate()
                     var
-                        Ok : Boolean;
+                        Ok: Boolean;
                     begin
                         Ok := Rec.Get(MyCar.CarID);
                     end;

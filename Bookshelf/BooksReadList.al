@@ -1,13 +1,12 @@
 page 50103 BookReadList
 {
-    Caption = 'Books Read Record';
-    PageType = ListPart;
+    Caption = 'Books Read List';
+    PageType = List;
     SourceTable = BooksRead;
     UsageCategory = Administration;
     ApplicationArea = All;
     Editable = false;
     CardPageId = BooksReadCard;
-    
     layout
     {
         area(Content)
@@ -15,6 +14,10 @@ page 50103 BookReadList
             repeater(Group)
             {
                 field("No."; Rec."No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Title"; Rec.Title)
                 {
                     ApplicationArea = All;
                 }
@@ -35,5 +38,43 @@ page 50103 BookReadList
     
     
 }
+
+page 50110 BookReadListPart
+{
+    Caption = 'Books Read List Part';
+    PageType = ListPart;
+    SourceTable = BooksRead;
+    UsageCategory = Administration;
+    ApplicationArea = All;
+    Editable = false;
+    CardPageId = BooksReadCard;
+    layout
+    {
+        area(Content)
+        {
+            repeater(Group)
+            {
+                field("No."; Rec."No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Title"; Rec.Title)
+                {
+                    ApplicationArea = All;
+                }
+                field("Time to Read";Rec."Time to Read")
+                {
+                    ApplicationArea = All;
+                }
+                
+
+            }
+        }
+
+    }
+    
+    
+}
+
 
 

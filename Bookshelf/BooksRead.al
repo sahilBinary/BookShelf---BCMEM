@@ -11,13 +11,18 @@ table 50101 BooksRead
             DataClassification = ToBeClassified;
             TableRelation = Book;
         }
-        field(2; "Person ID"; Code[20])
+        field(2; "Title"; Text[50])
+        {
+            Caption = 'Title';
+            DataClassification = ToBeClassified;
+        }
+        field(3; "Person ID"; Code[20])
         {
             Caption = 'Person ID';
             DataClassification = ToBeClassified;
             TableRelation = Customer;
         }
-        field(3; "Time to Read"; Duration)
+        field(4; "Time to Read"; Duration)
         {
             Caption = 'Time to Read';
             DataClassification = ToBeClassified;

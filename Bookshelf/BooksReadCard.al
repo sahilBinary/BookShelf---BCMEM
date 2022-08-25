@@ -16,6 +16,20 @@ page 50102 BooksReadCard
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
+                    trigger OnValidate()
+                    var
+                        myRec: Record Book;
+                    begin
+                        myRec.Reset();
+                        if myRec.Get(Rec."No.") then begin
+                            Rec.Title := myRec.Title;
+                        end;
+                    end;
+                }
+                field("Title"; Rec.Title)
+                {
+                    ApplicationArea = All; 
+                    Editable = false;                 
                 }
                 field("Person ID"; Rec."Person ID")
                 {

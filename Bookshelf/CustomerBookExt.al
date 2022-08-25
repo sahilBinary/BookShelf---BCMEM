@@ -4,8 +4,22 @@ tableextension 50100 CustomerBookExtension extends Customer
     {
         field(50100; "Favourite Book No."; Code[20])
         {
-            TableRelation = Book."No.";
+            TableRelation = Book;
             Caption = 'Favourite Book No.';
+            DataClassification = ToBeClassified;
+            trigger OnValidate()
+            var
+                myRec: Record Book;
+            begin
+                Rec.Reset();
+                myRec.Get(Rec."Favourite Book No.");
+                Rec."Favourite Book Name" := myRec.Title;
+            end;
+        }
+
+        field(50103; "Favourite Book Name"; Text[50])
+        {
+            Caption = 'Favourite Book Name';
             DataClassification = ToBeClassified;
         }
 

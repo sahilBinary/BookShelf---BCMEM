@@ -35,14 +35,27 @@ table 50100 Book
             caption = 'Page Count';
             DataClassification = ToBeClassified;
         }
+        field(6; Price; Decimal)
+        {
+            Caption = 'Price';
+            DataClassification = ToBeClassified;
+        }
 
     }
+
 
     keys
     {
         key(PK; "No.")
         {
             Clustered = true;
+        }
+    }
+
+    fieldgroups
+    {
+        fieldgroup(DropDown; "No.",Title,Author)
+        {
         }
     }
 

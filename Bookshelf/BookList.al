@@ -6,7 +6,7 @@ page 50101 BookList
     UsageCategory = Administration;
     ApplicationArea = All;
     Editable = false;
-    CardPageId = BookCard;
+    CardPageId = "Book Card";
 
     layout
     {

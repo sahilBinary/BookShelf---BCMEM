@@ -16,8 +16,11 @@ pageextension 50100 CustomerCardBookExtension extends "Customer Card"
                 field("Favourite Book No."; Rec."Favourite Book No.")
                 {
                     ApplicationArea = All;
-                    TableRelation = Book;
-
+                }
+                field("Favourite Book Name"; Rec."Favourite Book Name")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Total Books Read"; Rec."Total Books Read")
                 {
@@ -31,7 +34,7 @@ pageextension 50100 CustomerCardBookExtension extends "Customer Card"
 
             }
 
-            part("Book List"; BookReadList)
+            part("Book List"; BookReadListPart)
             {
                 Caption = 'Books Read list';
                 ApplicationArea = All;
