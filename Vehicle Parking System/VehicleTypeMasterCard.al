@@ -1,10 +1,10 @@
-page 50107 "Car Type Master"
+page 50107 VehicleTypeMaster
 {
-    Caption = 'Car Type Master';
+    Caption = 'Vehicle Type Master Card';
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = "Car Master";
+    SourceTable = VehicleMaster;
 
     layout
     {
@@ -14,17 +14,7 @@ page 50107 "Car Type Master"
             {
                 field(CarID; rec.CarID)
                 {
-                
                     ApplicationArea = All;
-                    trigger OnValidate()
-                    var
-                        myRec: Record "Car Master";
-                    begin
-                        if myRec.Get(Rec.CarID) then begin
-                            //Message('Record with Car ID = %1 already exists. Please use a different Car ID', Rec.CarID);
-                            //Rec.CarID := xrec.CarID;
-                        end;
-                    end;
                 }
                 field(CarType; rec.CarType)
                 {

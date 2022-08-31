@@ -1,9 +1,10 @@
 codeunit 50101 functions
 {
+
+
     procedure checkNumber(myInt: Integer)
     begin
-
-        if myInt < 0 then begin
+        if (myInt < 0) then begin
             Message('The Number %1 is not a valid input', myInt);
         end;
 
@@ -127,3 +128,5 @@ codeunit 50101 functions
         Message('Month No %1 of year %2 has %3 days', InputMonth, InputYear, NoOfDays);
     end;
 }
+
+

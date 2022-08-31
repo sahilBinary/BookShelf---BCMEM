@@ -27,7 +27,7 @@ tableextension 50100 CustomerBookExtension extends Customer
         {
             //flow field calculate using booksread table
             FieldClass = FlowField;
-            CalcFormula = count(BooksRead where("Person ID" = FIELD("No.")));
+            CalcFormula = count(BooksRead where("Person ID" = field("No.")));
 
         }
         field(50102; "Total Reading Time"; Duration)
@@ -36,6 +36,24 @@ tableextension 50100 CustomerBookExtension extends Customer
             FieldClass = FlowField;
             CalcFormula = sum(BooksRead."Time to Read" where("Person ID" = FIELD("No.")));
 
+        }
+        field(50104; "TotalOrdersPlaced"; Integer)
+        {
+            Caption = 'Orders Placed';
+            FieldClass = FlowField;
+            CalcFormula = count(BooksPurchase where ("Person ID" = field("No.")));
+        }
+        field(50105; "TotalBooksPurchased"; Integer)
+        {
+            Caption = 'Books Purchased';
+            FieldClass = FlowField;
+            CalcFormula = sum(BookSalesLines.Quantity where ("Person ID" = field("No.")));
+        }
+        field(50106; "BookSales"; Decimal)
+        {
+            Caption = 'Book Sales ($)';
+            FieldClass = FlowField;
+            CalcFormula = sum(BookSalesLines.LineAmount where ("Person ID" =field("No.")));
         }
         field(50116; ShoeSize; Integer)
         {
@@ -49,6 +67,8 @@ tableextension 50100 CustomerBookExtension extends Customer
 
             end;
         }
+
+
     }
 
     trigger OnAfterInsert()
@@ -65,4 +85,5 @@ tableextension 50100 CustomerBookExtension extends Customer
         if (ShoeSize = 0) then
             ShoeSize := Random(42);
     end;
+
 }

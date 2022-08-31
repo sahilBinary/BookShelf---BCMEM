@@ -1,6 +1,6 @@
 page 50103 BookReadList
 {
-    Caption = 'Books Read List';
+    Caption = 'Books Read Record';
     PageType = List;
     SourceTable = BooksRead;
     UsageCategory = Administration;
@@ -41,11 +41,11 @@ page 50103 BookReadList
 
 page 50110 BookReadListPart
 {
-    Caption = 'Books Read List Part';
+    Caption = 'Books Read Record';
     PageType = ListPart;
     SourceTable = BooksRead;
     UsageCategory = Administration;
-    ApplicationArea = All;
+    //ApplicationArea = All;
     Editable = false;
     CardPageId = BooksReadCard;
     layout

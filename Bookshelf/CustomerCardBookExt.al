@@ -31,6 +31,14 @@ pageextension 50100 CustomerCardBookExtension extends "Customer Card"
                 {
                     ApplicationArea = All;
                 }
+                // field("Books Purchased"; Rec."Books Purchased")
+                // {
+                //     ApplicationArea = All;
+                // }
+                // field("Amount Spent on Books"; Rec."Book Sales")
+                // {
+                //     ApplicationArea = All;
+                // }
 
             }
 
@@ -41,6 +49,30 @@ pageextension 50100 CustomerCardBookExtension extends "Customer Card"
                 SubPageLink = "Person ID" = field("No.");
             }
 
+            group(BookSales)
+            {
+                 Caption = 'Book Sales Details';
+                 field(BooksPurchased; rec.TotalOrdersPlaced)
+                {
+                    ApplicationArea = All;
+                }
+                field(TotalBooksPurchased; rec.TotalBooksPurchased)
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field(AmountSpent; rec.BookSales)
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+            }
+            part(BookSalesList; BookSalesListPartList)
+            {
+                Caption = 'List of Books Purchased';
+                ApplicationArea = All;
+                SubPageLink = "Person ID" = field("No.");
+            }
 
         }
 

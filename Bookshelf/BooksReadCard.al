@@ -1,8 +1,8 @@
 page 50102 BooksReadCard
 {
-    Caption = 'Books Read';
+    Caption = 'Book Read Card';
     PageType = Card;
-    ApplicationArea = All;
+    //ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = BooksRead;
 

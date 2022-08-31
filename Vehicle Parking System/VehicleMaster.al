@@ -1,4 +1,4 @@
-table 50103 "Car Master"
+table 50105 "VehicleMaster"
 {
     DataClassification = ToBeClassified;
 
@@ -8,7 +8,6 @@ table 50103 "Car Master"
         {
             Caption = 'Car ID';
             DataClassification = ToBeClassified;
-
         }
         field(2; CarType; Text[50])
         {
@@ -30,7 +29,7 @@ table 50103 "Car Master"
         }
         field(5; RatePerHour; Decimal)
         {
-            Caption = 'Rate Per Hour';
+            Caption = 'Rate Per Hour ($)';
             DataClassification = ToBeClassified;
         }
 
@@ -44,5 +43,17 @@ table 50103 "Car Master"
         }
     }
 
+    procedure InsertValues(var myRec: Record VehicleMaster)
+    var
+        punch: Record VehicleMaster;
+    begin
+        //punch.LockTable();
+        punch.Get(myRec.CarID);
+        punch.TotalParkingSlots := myRec.TotalParkingSlots;
+        punch.AvailableParking := myRec.AvailableParking;
+        punch.Modify();
+        //Message('punch.totalparking = %1, punch.availparking = %2',punch.TotalParkingSlots,punch.AvailableParking);
+
+    end;
 
 }

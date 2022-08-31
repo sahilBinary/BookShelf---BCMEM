@@ -1,53 +1,85 @@
 page 50111 BooksPurchaseCard
 {
-    Caption = 'Books Purchase Card';
+    Caption = 'Books Order Card';
     PageType = Card;
-    ApplicationArea = All;
+    //ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = BooksPurchase;
-    SourceTableTemporary = true;
+    //SourceTableTemporary = true;
 
     layout
     {
         area(Content)
         {
-            group(GroupName)
+            group(Details)
             {
-                field("Book No."; rec."Book No.")
+                field("Order ID"; Rec."Order ID")
                 {
                     ApplicationArea = all;
                 }
-                field("Quantity"; rec.Quantity)
+                field("Person ID"; Rec."Person ID")
                 {
                     ApplicationArea = all;
+                    ToolTip = 'Enter the ID of the customer : Code[20]';
                 }
-                field("Person ID"; rec."Person ID")
+                field("Date of Purchase"; Rec."Date of Purchase")
                 {
                     ApplicationArea = all;
+                    ToolTip = 'Enter the date of purchase.';
                 }
-                field("Date of Purchase"; rec."Date of Purchase")
+
+            }
+            group(BookSalesLines)
+            {
+                part(Lines; BookSalesListPartList)
                 {
                     ApplicationArea = all;
+                    SubPageLink = "Order ID" = field("Order ID");
                 }
             }
+
         }
     }
-
     actions
     {
         area(Processing)
         {
-            action("Confirm Purchase")
-            {
-                ApplicationArea = All;
+            // action("Confirm Purchase")
+            // {
+            //     ApplicationArea = All;
 
-                trigger OnAction()
-                begin
-                    Rec.ConfirmPurchase(Rec);
-                end;
-            }
+            //     trigger OnAction()
+            //     var
+            //         SalesLines: Record BookSalesLines;
+            //     // BooksLines: Record BookSalesLines;
+            //     begin
+
+            //         Rec.ConfirmPurchase(Rec);
+            //         SalesLines.SetFilter("Order ID", '=%1', Rec."Order ID");
+            //         if SalesLines.FindSet() then begin
+            //             repeat begin
+            //                 SalesLines."Person ID" := Rec."Person ID";
+            //                 SalesLines.Modify()
+            //             end until SalesLines.Next() = 0;
+            //         end;
+            //         // BooksLines := CurrPage.Lines.Page.GetRecords();
+            //         // //CurrPage.Lines.Page.GetRecord(BooksLines);
+            //         // if BooksLines.FindSet() then begin
+            //         //     repeat begin
+            //         //         Message('BooksLines."Order ID" = %1, BooksLines."Book No" = %2, BooksLines.Quantity = %3', BooksLines."Order ID", BooksLines."Book No.", BooksLines.Quantity);
+            //         //     end until BooksLines.Next() = 0;
+            //         // end else begin
+            //         //     Message('BooksLines.Findset() failed');
+            //         // end;
+
+            //     end;
+            // }
         }
     }
 
-
+    procedure GetRecBookPurchase() : Record BooksPurchase
+    begin
+        exit(Rec);
+    end;
 }
+

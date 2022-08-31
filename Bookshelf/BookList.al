@@ -1,6 +1,6 @@
 page 50101 BookList
 {
-    Caption = 'Book List';
+    Caption = 'Books';
     PageType = List;
     SourceTable = Book;
     UsageCategory = Administration;
@@ -28,7 +28,11 @@ page 50101 BookList
                 }
                 field("Page Count"; Rec."Page Count")
                 {
-                    caption = 'Page Count';
+                    ApplicationArea = All;
+                }
+                field("Price"; Rec.Price)
+                {
+                    ApplicationArea = All;
                 }
             }
         }

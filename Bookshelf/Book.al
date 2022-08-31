@@ -8,7 +8,6 @@ table 50100 Book
         {
             Caption = 'No.';
             DataClassification = ToBeClassified;
-
         }
 
         field(2; Title; Text[50])
@@ -37,7 +36,7 @@ table 50100 Book
         }
         field(6; Price; Decimal)
         {
-            Caption = 'Price';
+            Caption = 'Price ($)';
             DataClassification = ToBeClassified;
         }
 
