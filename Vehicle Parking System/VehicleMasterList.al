@@ -46,13 +46,14 @@ page 50105 VehicleMasterList
     {
         area(Processing)
         {
-            action(ActionName)
+            action(ParkingSlotDetails)
             {
+                Caption = 'Update Parking Slot Details';
                 ApplicationArea = All;
-
+                Promoted = true;
                 trigger OnAction();
                 begin
-
+                    Page.Run(50106);
                 end;
             }
         }

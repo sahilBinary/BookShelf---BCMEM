@@ -1,8 +1,9 @@
 codeunit 50101 functions
 {
 
-
     procedure checkNumber(myInt: Integer)
+    var
+     //mylabel: label 'The Number %1 is not a valid input';
     begin
         if (myInt < 0) then begin
             Message('The Number %1 is not a valid input', myInt);

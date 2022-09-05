@@ -32,7 +32,7 @@ table 50106 ParkingInfo
         }
         field(6; TotalFare; Decimal)
         {
-            Caption = 'Total Fare';
+            Caption = 'Total Fare ($)';
             DataClassification = ToBeClassified;
         }
     }
@@ -42,7 +42,7 @@ table 50106 ParkingInfo
         key(PK; CarNo)
         {
         }
-        key(sec;CheckIn)
+        key(sec; CheckIn)
         {
             //ordering by checkin time
             Clustered = true;
@@ -50,6 +50,19 @@ table 50106 ParkingInfo
     }
 
 
+    procedure InsertCheckIn(var myRec: Record ParkingInfo)
+    var
+        myRec2: Record ParkingInfo;
+        myRec1: Record VehicleMaster;
+    begin
+        myrec2.Init();
+        myRec2.TransferFields(myRec);
+        myRec2.Insert();
+
+        myRec1.Get(myRec.CarId);
+        myRec1.AvailableParking := myRec1.AvailableParking -1;
+        myRec1.Modify();
+    end;
 
     procedure FillDetails(var myrec: Record ParkingInfo)
     var
@@ -70,13 +83,9 @@ table 50106 ParkingInfo
         Rec2.Get(myRec.CarNo);
         Rec3.Get(myRec.CarId);
         interval := myRec.CheckOut - Rec2.CheckIn;
-        //check logic again...somee wrong with it
-        // hours := interval / 3600;
-        // if (hours * 10 mod 10 <> 0) then begin
-        //     hours := hours - (hours * 10 mod 10) + 1;
-        // end;
+
         myRec.ParkedTime := interval;
-        myRec.TotalFare := (interval/3600000) * Rec3.RatePerHour;
+        myRec.TotalFare := (interval / 3600000) * Rec3.RatePerHour;
     end;
 
     procedure UpdateRecord(var myRec: Record ParkingInfo)
@@ -89,6 +98,9 @@ table 50106 ParkingInfo
         Rec1.CheckOut := myRec.CheckOut;
         Rec1.ParkedTime := myRec.ParkedTime;
         Rec1.TotalFare := myRec.TotalFare;
-        Rec2.AvailableParking := Rec2.AvailableParking -1;
+        Rec2.AvailableParking := Rec2.AvailableParking + 1;
+
+        Rec1.Modify();
+        Rec2.Modify();
     end;
 }

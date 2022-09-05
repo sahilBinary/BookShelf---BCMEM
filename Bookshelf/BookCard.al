@@ -15,7 +15,7 @@ page 50100 "Book Card"
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Enter your Book No. Data Type : Code[20]';
+                    ToolTip = 'Specifies the Book No.';
                 }
                 field(Title; Rec.Title)
                 {

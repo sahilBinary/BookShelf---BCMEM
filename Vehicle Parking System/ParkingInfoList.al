@@ -48,13 +48,24 @@ page 50108 ParkingInfoList
     {
         area(Processing)
         {
-            action(ActionName)
+            action(CheckInCard)
             {
+                Caption = 'Check In';
                 ApplicationArea = All;
 
                 trigger OnAction();
                 begin
+                    Page.Run(50109);
+                end;
+            }
+            action(CheckOutCard)
+            {
+                Caption = 'Check Out';
+                ApplicationArea = All;
 
+                trigger OnAction();
+                begin
+                    Page.Run(50114);
                 end;
             }
         }

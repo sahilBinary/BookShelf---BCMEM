@@ -38,6 +38,7 @@ page 50106 ParkingAllocationMaster
                     var
                         myRec: Record VehicleMaster;
                     begin
+                        //check logic again
                         myRec.Get(Rec.CarID);
                         rec.AvailableParking := rec.TotalParkingSlots - (myRec.TotalParkingSlots - myRec.AvailableParking);
                     end;

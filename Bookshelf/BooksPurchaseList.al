@@ -5,8 +5,8 @@ page 50112 BooksPurchaseList
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = BooksPurchase;
-    CardPageId = BooksPurchaseCard;
-    //Editable = false;
+    CardPageId = BooksPurchaseCardNonEditable;
+    Editable = false;
 
     layout
     {
@@ -33,6 +33,51 @@ page 50112 BooksPurchaseList
                 }
             }
         }
+    }
+
+    actions
+    {
+        area(Reporting)
+        {
+            action(BookReport)
+            {
+                Caption = 'Book Report';
+                ApplicationArea = All;
+                Image = "Report";
+
+                trigger OnAction()
+                begin
+                    Report.Run(50101);
+                end;
+            }
+        }
+        area(Creation)
+        {
+            action(NewOrder)
+            {
+                Caption = 'Create New Order';
+                ApplicationArea = All;
+                trigger OnAction()
+                begin
+                    Page.Run(50111);
+                end;
+            }
+        }
+
+        area(Processing)
+        {
+            action(xmlport)
+            {
+                ApplicationArea = All;
+                Caption = 'Import/Export Book Orders';
+                trigger OnAction()
+                begin
+                    Xmlport.Run(50101);
+                end;
+            }
+        }
+
+
     }
 
 

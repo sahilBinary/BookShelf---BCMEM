@@ -51,8 +51,8 @@ pageextension 50100 CustomerCardBookExtension extends "Customer Card"
 
             group(BookSales)
             {
-                 Caption = 'Book Sales Details';
-                 field(BooksPurchased; rec.TotalOrdersPlaced)
+                Caption = 'Book Sales Details';
+                field(BooksPurchased; rec.TotalOrdersPlaced)
                 {
                     ApplicationArea = All;
                 }
@@ -67,7 +67,7 @@ pageextension 50100 CustomerCardBookExtension extends "Customer Card"
                     Editable = false;
                 }
             }
-            part(BookSalesList; BookSalesListPartList)
+            part(BookSalesList; BookSalesListPartPerm)
             {
                 Caption = 'List of Books Purchased';
                 ApplicationArea = All;
@@ -75,12 +75,28 @@ pageextension 50100 CustomerCardBookExtension extends "Customer Card"
             }
 
         }
-
-
-
-
-
     }
 
+    actions
+    {
+        addafter(BackgroundStatement)
+        {
+            action(BookReport)
+            {
+                Caption = 'Book Report';
+                ApplicationArea = All;
+                Image = "Report";
+
+                trigger OnAction()
+                var
+                    myreport: Report MyReport1;
+                    myrec: Record BookSalesLines;
+                begin
+                    myrec.SetFilter("Person ID", '=%1', Rec."No.");
+                    myreport.SetTableView(myrec);
+                end;
+            }
+        }
+    }
 }
 

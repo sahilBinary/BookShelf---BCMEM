@@ -39,6 +39,24 @@ page 50101 BookList
 
     }
 
+    actions
+    {
+        area(Reporting)
+        {
+            action(xmlport)
+            {
+                Promoted = true;
+                Caption = 'Export/Import data';
+                ApplicationArea = All;
+                
+                trigger OnAction()
+                begin
+                    Xmlport.Run(50100);
+                end;
+            }
+        }
+    }
+
 
 }
 

@@ -53,7 +53,7 @@ table 50100 Book
 
     fieldgroups
     {
-        fieldgroup(DropDown; "No.",Title,Author)
+        fieldgroup(DropDown; "No.", Title, Author)
         {
         }
     }

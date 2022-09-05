@@ -5,6 +5,7 @@ page 50109 CheckInCard
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = ParkingInfo;
+    SourceTableTemporary = true;
 
     layout
     {
@@ -32,13 +33,16 @@ page 50109 CheckInCard
     {
         area(Processing)
         {
-            action(ActionName)
+            action(PunchCheckInCard)
             {
+                Caption = 'Confirm Check In';
                 ApplicationArea = All;
 
                 trigger OnAction()
-                begin
+                var
 
+                begin
+                    Rec.InsertCheckIn(Rec);
                 end;
             }
         }

@@ -73,6 +73,14 @@ page 50113 TestCard
                     end;
                 end;
             }
+            action("Execute xmlport")
+            {
+                ApplicationArea = all;
+                trigger onAction()
+                begin
+                    Xmlport.Run(50100);
+                end;
+            }
         }
     }
 

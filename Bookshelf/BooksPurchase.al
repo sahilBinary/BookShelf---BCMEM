@@ -23,7 +23,7 @@ table 50104 BooksPurchase
             Caption = 'Total Amount ($)';
             //DataClassification = ToBeClassified;
             FieldClass = FlowField;
-            CalcFormula = sum(BookSalesLines.LineAmount where ("Order ID" = field("Order ID")));
+            CalcFormula = sum(BookSalesLines.LineAmount where("Order ID" = field("Order ID")));
         }
 
     }
@@ -38,18 +38,13 @@ table 50104 BooksPurchase
     procedure ConfirmPurchase(var myRec1: Record BooksPurchase)
     var
         punch1: Record BooksPurchase;
+        check: Record BooksPurchase;
     begin
+
         punch1.Init();
         punch1.TransferFields(myRec1);
         punch1.Insert();
-        // if myRec2.FindSet() then begin
-        //     repeat begin
-        //         punch2.Reset();
-        //         punch2.Init();
-        //         punch2.TransferFields(myRec2);
-        //         punch2.Insert();
-        //     end until myRec2.next() = 0;
-        // end;
+
     end;
 
 
