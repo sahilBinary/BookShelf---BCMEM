@@ -5,6 +5,7 @@ report 50101 MyReport1
     DefaultLayout = RDLC;
     RDLCLayout = 'MyRDLReport.rdl';
 
+
     dataset
     {
         dataitem(DataItem1; BookSalesLines)
@@ -48,17 +49,6 @@ report 50101 MyReport1
             }
         }
 
-        actions
-        {
-            area(processing)
-            {
-                action(ActionName)
-                {
-                    ApplicationArea = All;
-
-                }
-            }
-        }
     }
 
 

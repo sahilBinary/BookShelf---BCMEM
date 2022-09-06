@@ -1,10 +1,10 @@
-page 50109 CheckInCard
+page 50109 BSSI_Page_Card_CheckIn
 {
-    Caption = 'Check In';
+    Caption = 'Check In Card';
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = ParkingInfo;
+    SourceTable = BSSI_Table_ParkingInfo;
     SourceTableTemporary = true;
 
     layout
@@ -13,15 +13,19 @@ page 50109 CheckInCard
         {
             group(GroupName)
             {
-                field(CarId; rec.CarId)
+                field(BSSI_Field_Date; rec.BSSI_Field_Date)
                 {
                     ApplicationArea = All;
                 }
-                field(CarNo; rec.CarNo)
+                field(BSSI_Field_CarId; rec.BSSI_Field_CarId)
+                {
+                    ApplicationArea = All;
+                }
+                field(BSSI_Field_CarNo; rec.BSSI_Field_CarNo)
                 {
                     ApplicationArea = all;
                 }
-                field(CheckIn; Rec.CheckIn)
+                field(BSSI_Field_CheckIn; Rec.BSSI_Field_CheckIn)
                 {
                     ApplicationArea = all;
                 }
@@ -35,7 +39,7 @@ page 50109 CheckInCard
         {
             action(PunchCheckInCard)
             {
-                Caption = 'Confirm Check In';
+                Caption = 'Punch Check In Time';
                 ApplicationArea = All;
 
                 trigger OnAction()

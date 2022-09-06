@@ -4,7 +4,7 @@ page 50114 CheckOutCard
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = ParkingInfo;
+    SourceTable = BSSI_Table_ParkingInfo;
     SourceTableTemporary = true;
 
     layout
@@ -13,29 +13,29 @@ page 50114 CheckOutCard
         {
             group(GroupName)
             {
-                field(CarNo; rec.CarNo)
+                field(BSSI_Field_CarNo; rec.BSSI_Field_CarNo)
                 {
-                    TableRelation = ParkingInfo;
+                    TableRelation = BSSI_Table_ParkingInfo;
                     ApplicationArea = all;
-                    ToolTip = 'Enter your Car No';
+                    ToolTip = 'Specifies the Car No';
                     trigger OnValidate()
                     begin
                         Rec.FillDetails(Rec);
                     end;
                 }
-                field(CarId; rec.CarId)
+                field(BSSI_Field_CarId; rec.BSSI_Field_CarId)
                 {
-                    TableRelation = VehicleMaster;
+                    TableRelation = BSSI_Table_VehicleMaster;
                     ApplicationArea = all;
                     Editable = false;
                 }
-                field(CheckIn; rec.CheckIn)
+                field(BSSI_Field_CheckIn; rec.BSSI_Field_CheckIn)
                 {
                     ApplicationArea = all;
                     ToolTip = 'Your Check In Time';
                     Editable = false;
                 }
-                field(CheckOut; rec.CheckOut)
+                field(BSSI_Field_CheckOut; rec.BSSI_Field_CheckOut)
                 {
                     Caption = 'Check Out Time';
                     ApplicationArea = all;
@@ -45,14 +45,14 @@ page 50114 CheckOutCard
                         rec.CalcData(rec);
                     end;
                 }
-                field(ParkedTime; rec.ParkedTime)
+                field(BSSI_Field_ParkedTime; rec.BSSI_Field_ParkedTime)
                 {
                     Caption = 'Parked Time';
                     ApplicationArea = all;
                     ToolTip = 'Your parked time based on the Check out time entered';
                     Editable = false;
                 }
-                field(TotalFare; rec.TotalFare)
+                field(BSSI_Field_TotalFare; rec.BSSI_Field_TotalFare)
                 {
                     Caption = 'Total Fare ($)';
                     ToolTip = 'Total Fare';
@@ -67,8 +67,9 @@ page 50114 CheckOutCard
     {
         area(Processing)
         {
-            action("Confirm Check Out")
+            action(CheckOut)
             {
+                Caption = 'Punch Check out Time';
                 ApplicationArea = All;
 
                 trigger OnAction()

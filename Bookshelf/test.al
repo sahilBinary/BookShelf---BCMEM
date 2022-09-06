@@ -73,7 +73,7 @@ page 50113 TestCard
                     end;
                 end;
             }
-            action("Execute xmlport")
+            action("Execute simple xmlport")
             {
                 ApplicationArea = all;
                 trigger onAction()
@@ -81,9 +81,41 @@ page 50113 TestCard
                     Xmlport.Run(50100);
                 end;
             }
+            action("xmlport contacts")
+            {
+                ApplicationArea = All;
+                Image = XMLFile;
+
+                trigger OnAction()
+                begin
+                    Xmlport.Run(50102);
+                end;
+            }
+            action(ExportToXml)
+            {
+                Caption = 'Export to XML';
+                ApplicationArea = All;
+                Image = XMLFile;
+
+                trigger OnAction()
+                var
+                    booklistXml: XmlPort "booklist XML";
+                    TempBlob: Codeunit "Temp Blob";
+                    OutStr: OutStream;
+                    InStr: InStream;
+                    FileName: Text;
+                begin
+                    TempBlob.CreateOutStream(OutStr);
+                    booklistXml.SetDestination(OutStr);
+                    booklistXml.Export();
+                    TempBlob.CreateInStream(InStr);
+                    FileName := 'Customers.xml';
+                    File.DownloadFromStream(InStr, 'Download', '',
+                                            '', FileName);
+                end;
+            }
         }
     }
-
     var
         myQuery: Query MyQuery;
 }
@@ -94,18 +126,31 @@ codeunit 50102 TestCodeunit
     [BusinessEvent(true)]
     procedure testProc()
     begin
-       // Message('testProc runs');
+        // Message('testProc runs');
     end;
-    
+
 
 }
 codeunit 50103 MyCodeunit
 {
-    [EventSubscriber(ObjectType::Codeunit,Codeunit::TestCodeunit,'testProc','',true,true)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::TestCodeunit, 'testProc', '', true, true)]
     procedure MyProcedure()
     var
         myInt: Integer;
     begin
-        Message('event published,subscribed to and raised successfully');
+        Message('Event published,subscribed to and raised successfully');
     end;
+
+    trigger OnRun()
+    var
+        varXmlFile: File;
+        varOutputStream: OutStream;
+        varInputStream: InStream;
+    begin
+        // varXmlFile.CREATE(“FilePath\myXmlfile.xml”);
+        // varXmlFile.CREATEOUTSTREAM(varOutputStream);
+        // XMLPORT.EXPORT(XMLPORT::XMLportName, varOutputStream);
+        // varXmlFile.CLOSE;
+    end;
+
 }

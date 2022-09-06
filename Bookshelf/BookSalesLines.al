@@ -11,7 +11,8 @@ table 50107 BookSalesLines
         }
         field(2; "Person ID"; Code[20])
         {
-            DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = lookup(BooksPurchase."Person ID" where("Order ID" = field("Order ID")));
         }
         field(3; "Book No."; Code[20])
         {
@@ -43,24 +44,17 @@ table 50107 BookSalesLines
             Clustered = true;
         }
     }
-    // procedure ConfirmPurchase(var myRec: Record BooksPurchase)
-    // var
-    //     punch: record BooksPurchase;
-    // begin
-    //     punch.Init();
-    //     punch.TransferFields(myRec);
-    //     punch.Insert();
-    // end;
 
-    // procedure CalcAmount(var myrec: record BooksPurchase)
-    // var
-    //     MyBook: Record Book;
-    // begin
-    //     MyBook.Get(myrec."Book No.");
-    //     rec.Amount := myrec.Quantity * MyBook.Price;
-    // end;
-
-
+    // double check this
+    trigger OnInsert()
+    var
+        myrec: Record Book;
+        myrec2: Record BooksPurchase;
+    begin
+        if myrec.Get(Rec."Book No.") then begin
+            Rec.LineAmount := Rec.Quantity * myrec.Price;
+        end;
+    end;
 }
 
 page 50116 BookSalesListPartList
@@ -134,16 +128,7 @@ page 50116 BookSalesListPartList
         }
 
     }
-    // procedure GetRecords(): Record BookSalesLines
-    // var
-    //     returnvalue: Record BookSalesLines;
-    // begin
-    //     Rec.FindFirst();
-    //     repeat begin
-    //         //Message('Rec."Order ID" = %1, Rec."Book No." = %2, Rec.count = %3',Rec."Order ID",Rec."Book No.",Rec.Count());
-    //     end until Rec.next() = 0;
-    //     exit(Rec);
-    // end;
+
 
     procedure PunchRecord()
     var
@@ -174,7 +159,7 @@ page 50117 BookSalesList
     SourceTable = BookSalesLines;
     UsageCategory = Administration;
     ApplicationArea = All;
-    Editable = false;
+    //Editable = false;
     layout
     {
         area(Content)

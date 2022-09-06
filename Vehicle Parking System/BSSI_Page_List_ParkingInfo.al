@@ -1,10 +1,10 @@
-page 50108 ParkingInfoList
+page 50108 BSSI_Page_List_ParkingInfo
 {
     Caption = 'Parking Info List';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = ParkingInfo;
+    SourceTable = BSSI_Table_ParkingInfo;
 
     layout
     {
@@ -12,27 +12,31 @@ page 50108 ParkingInfoList
         {
             repeater(GroupName)
             {
-                field(CarId; rec.CarId)
+                field(BSSI_Field_Date; rec.BSSI_Field_Date)
                 {
                     ApplicationArea = All;
                 }
-                field(CarNo; rec.CarNo)
+                field(BSSI_Field_CarId; rec.BSSI_Field_CarId)
+                {
+                    ApplicationArea = All;
+                }
+                field(BSSI_Field_CarNo; rec.BSSI_Field_CarNo)
                 {
                     ApplicationArea = all;
                 }
-                field(CheckIn; Rec.CheckIn)
+                field(BSSI_Field_CheckIn; Rec.BSSI_Field_CheckIn)
                 {
                     ApplicationArea = all;
                 }
-                field(CheckOut; Rec.CheckOut)
+                field(BSSI_Field_CheckOut; Rec.BSSI_Field_CheckOut)
                 {
                     ApplicationArea = all;
                 }
-                field(ParkedTime; Rec.ParkedTime)
+                field(BSSI_Field_ParkedTime; Rec.BSSI_Field_ParkedTime)
                 {
                     ApplicationArea = all;
                 }
-                field(TotalFare; rec.TotalFare)
+                field(BSSI_Field_TotalFare; rec.BSSI_Field_TotalFare)
                 {
                     ApplicationArea = all;
                 }

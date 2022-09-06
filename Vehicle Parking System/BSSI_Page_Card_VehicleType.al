@@ -1,10 +1,10 @@
-page 50107 VehicleTypeMaster
+page 50107 BSSI_Page_Card_VehicleType
 {
-    Caption = 'Vehicle Type Master Card';
+    Caption = 'Vehicle Type Card';
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = VehicleMaster;
+    SourceTable = BSSI_Table_VehicleMaster;
 
     layout
     {
@@ -12,15 +12,15 @@ page 50107 VehicleTypeMaster
         {
             group(GroupName)
             {
-                field(CarID; rec.CarID)
+                field(BSSI_Field_CarID; rec.BSSI_Field_CarID)
                 {
                     ApplicationArea = All;
                 }
-                field(CarType; rec.CarType)
+                field(BSSI_Field_CarType; rec.BSSI_Field_CarType)
                 {
                     ApplicationArea = All;
                 }
-                field(RatePerHour; rec.RatePerHour)
+                field(BSSI_Field_RatePerHour; rec.BSSI_Field_RatePerHour)
                 {
                     ApplicationArea = All;
                 }

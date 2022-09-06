@@ -1,11 +1,11 @@
-page 50105 VehicleMasterList
+page 50105 BSSI_Page_List_Vehicle
 {
-    Caption = 'Vehicle Master List';
+    Caption = 'Vehicle List';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = VehicleMaster;
-    CardPageId = VehicleTypeMaster;
+    SourceTable = BSSI_Table_VehicleMaster;
+    CardPageId = BSSI_Page_Card_VehicleType;
     //Editable = false;
 
     layout
@@ -14,23 +14,23 @@ page 50105 VehicleMasterList
         {
             repeater(GroupName)
             {
-                field(CarID; rec.CarID)
+                field(BSSI_Field_CarID; rec.BSSI_Field_CarID)
                 {
                     ApplicationArea = All;
                 }
-                field(CarType; rec.CarType)
+                field(BSSI_Field_CarType; rec.BSSI_Field_CarType)
                 {
                     ApplicationArea = All;
                 }
-                field(TotalParkingSlots; rec.TotalParkingSlots)
+                field(BSSI_Field_TotalParkingSlots; rec.BSSI_Field_TotalParkingSlots)
                 {
                     ApplicationArea = All;
                 }
-                field(AvailableParking; rec.AvailableParking)
+                field(BSSI_Field_AvailableParking; rec.BSSI_Field_AvailableParking)
                 {
                     ApplicationArea = All;
                 }
-                field(RatePerHour; rec.RatePerHour)
+                field(BSSI_Field_RatePerHour; rec.BSSI_Field_RatePerHour)
                 {
                     ApplicationArea = All;
                 }
