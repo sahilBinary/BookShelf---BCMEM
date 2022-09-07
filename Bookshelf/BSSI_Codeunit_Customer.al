@@ -1,4 +1,4 @@
-codeunit 50100 CustomerCode
+codeunit 50100 BSSI_Codeunit_Customer
 {
     procedure CelebrateCustomer(MyCustomer: Record Customer; ExtraMessage: Text)
     begin

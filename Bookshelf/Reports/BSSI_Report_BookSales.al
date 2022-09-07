@@ -1,36 +1,35 @@
-report 50101 MyReport1
+report 50101 BSSI_Report_BookSales
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     DefaultLayout = RDLC;
-    RDLCLayout = 'MyRDLReport.rdl';
-
+    RDLCLayout = 'Bookshelf/Reports/MyRDLReport.rdl';
 
     dataset
     {
-        dataitem(DataItem1; BookSalesLines)
+        dataitem(DataItem1; BSSI_Table_BookSalesLines)
         {
-            column(Date_of_Purchase; "Date of Purchase")
+            column(Date_of_Purchase; BSSI_Field_DateOfPurchase)
             {
 
             }
-            column(Order_ID; "Order ID")
+            column(Order_ID; BSSI_Field_OrderID)
             {
 
             }
-            column(Person_ID; "Person ID")
+            column(Person_ID; BSSI_Field_PersonID)
             {
 
             }
-            column(Book_No_; "Book No.")
+            column(Book_No_; BSSI_Field_BookNo)
             {
 
             }
-            column(Quantity; Quantity)
+            column(Quantity; BSSI_Field_Quantity)
             {
 
             }
-            column(LineAmount; LineAmount)
+            column(LineAmount; BSSI_Field_LineAmount)
             {
 
             }
@@ -50,8 +49,6 @@ report 50101 MyReport1
         }
 
     }
-
-
 
     var
         myInt: Integer;

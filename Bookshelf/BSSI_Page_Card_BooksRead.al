@@ -1,10 +1,10 @@
-page 50102 BooksReadCard
+page 50102 BSSI_Page_Card_BooksRead
 {
     Caption = 'Book Read Card';
     PageType = Card;
     //ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = BooksRead;
+    SourceTable = BSSI_Table_BooksRead;
 
     layout
     {
@@ -13,30 +13,30 @@ page 50102 BooksReadCard
             group(General)
             {
                 Caption = 'General';
-                field("No."; Rec."No.")
+                field(BSSI_Field_BookNo; Rec.BSSI_Field_BookNo)
                 {
                     ApplicationArea = All;
                     trigger OnValidate()
                     var
-                        myRec: Record Book;
+                        myRec: Record BSSI_Table_Book;
                     begin
                         myRec.Reset();
-                        if myRec.Get(Rec."No.") then begin
-                            Rec.Title := myRec.Title;
+                        if myRec.Get(Rec.BSSI_Field_BookNo) then begin
+                            Rec.BSSI_Field_Title := myRec.BSSI_Field_Title;
                         end;
                     end;
                 }
-                field("Title"; Rec.Title)
+                field(BSSI_Field_Title; Rec.BSSI_Field_Title)
                 {
                     ApplicationArea = All; 
                     Editable = false;                 
                 }
-                field("Person ID"; Rec."Person ID")
+                field(BSSI_Field_PersonID; Rec.BSSI_Field_PersonID)
                 {
                     ApplicationArea = All;
                 }
 
-                field("Time To Read"; Rec."Time to Read")
+                field(BSSI_Field_TimeToRead; Rec.BSSI_Field_TimeToRead)
                 {
                     ApplicationArea = All;
                 }

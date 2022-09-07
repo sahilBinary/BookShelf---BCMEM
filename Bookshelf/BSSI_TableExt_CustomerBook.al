@@ -1,59 +1,57 @@
-tableextension 50100 CustomerBookExtension extends Customer
+tableextension 50100 BSSI_TableExt_CustomerBook extends Customer
 {
     fields
     {
         field(50100; "Favourite Book No."; Code[20])
         {
-            TableRelation = Book;
+            TableRelation = BSSI_Table_Book;
             Caption = 'Favourite Book No.';
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
             trigger OnValidate()
             var
-                myRec: Record Book;
+                myRec: Record BSSI_Table_Book;
             begin
                 Rec.Reset();
                 myRec.Get(Rec."Favourite Book No.");
-                Rec."Favourite Book Name" := myRec.Title;
+                Rec."Favourite Book Name" := myRec.BSSI_Field_Title;
             end;
         }
 
         field(50103; "Favourite Book Name"; Text[50])
         {
             Caption = 'Favourite Book Name';
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
         }
 
         field(50101; "Total Books Read"; Integer)
         {
-            //flow field calculate using booksread table
             FieldClass = FlowField;
-            CalcFormula = count(BooksRead where("Person ID" = field("No.")));
+            CalcFormula = count(BSSI_Table_BooksRead where(BSSI_Field_PersonID = field("No.")));
 
         }
         field(50102; "Total Reading Time"; Duration)
         {
-            //flow field calculate using booksread table
             FieldClass = FlowField;
-            CalcFormula = sum(BooksRead."Time to Read" where("Person ID" = FIELD("No.")));
+            CalcFormula = sum(BSSI_Table_BooksRead.BSSI_Field_TimeToRead where(BSSI_Field_PersonID = FIELD("No.")));
 
         }
         field(50104; "TotalOrdersPlaced"; Integer)
         {
             Caption = 'Orders Placed';
             FieldClass = FlowField;
-            CalcFormula = count(BooksPurchase where ("Person ID" = field("No.")));
+            CalcFormula = count(BSSI_Table_BookOrders where(BSSI_Field_PersonID = field("No.")));
         }
         field(50105; "TotalBooksPurchased"; Integer)
         {
             Caption = 'Books Purchased';
             FieldClass = FlowField;
-            CalcFormula = sum(BookSalesLines.Quantity where ("Person ID" = field("No.")));
+            CalcFormula = sum(BSSI_Table_BookSalesLines.BSSI_Field_Quantity where(BSSI_Field_PersonID = field("No.")));
         }
         field(50106; "BookSales"; Decimal)
         {
             Caption = 'Book Sales ($)';
             FieldClass = FlowField;
-            CalcFormula = sum(BookSalesLines.LineAmount where ("Person ID" =field("No.")));
+            CalcFormula = sum(BSSI_Table_BookSalesLines.BSSI_Field_LineAmount where(BSSI_Field_PersonID = field("No.")));
         }
         field(50116; ShoeSize; Integer)
         {
@@ -73,7 +71,7 @@ tableextension 50100 CustomerBookExtension extends Customer
 
     trigger OnAfterInsert()
     var
-        CustomerCode: Codeunit CustomerCode;
+        CustomerCode: Codeunit BSSI_Codeunit_Customer;
 
     begin
         CustomerCode.CelebrateCustomer(Rec, 'Congrats from the Table Extension');

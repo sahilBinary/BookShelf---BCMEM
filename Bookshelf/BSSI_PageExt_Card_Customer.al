@@ -1,4 +1,4 @@
-pageextension 50100 CustomerCardBookExtension extends "Customer Card"
+pageextension 50100 BSSI_PageExt_Card_Customer extends "Customer Card"
 {
     layout
     {
@@ -31,22 +31,14 @@ pageextension 50100 CustomerCardBookExtension extends "Customer Card"
                 {
                     ApplicationArea = All;
                 }
-                // field("Books Purchased"; Rec."Books Purchased")
-                // {
-                //     ApplicationArea = All;
-                // }
-                // field("Amount Spent on Books"; Rec."Book Sales")
-                // {
-                //     ApplicationArea = All;
-                // }
 
             }
 
-            part("Book List"; BookReadListPart)
+            part("Book List"; BSSI_Page_ListPart_BookRead)
             {
                 Caption = 'Books Read list';
                 ApplicationArea = All;
-                SubPageLink = "Person ID" = field("No.");
+                SubPageLink = BSSI_Field_PersonID = field("No.");
             }
 
             group(BookSales)
@@ -67,11 +59,11 @@ pageextension 50100 CustomerCardBookExtension extends "Customer Card"
                     Editable = false;
                 }
             }
-            part(BookSalesList; BookSalesListPartPerm)
+            part(BookSalesList; BSSI_Page_ListPart_BookSalesP)
             {
                 Caption = 'List of Books Purchased';
                 ApplicationArea = All;
-                SubPageLink = "Person ID" = field("No.");
+                SubPageLink = BSSI_Field_PersonID = field("No.");
             }
 
         }
@@ -89,10 +81,10 @@ pageextension 50100 CustomerCardBookExtension extends "Customer Card"
 
                 trigger OnAction()
                 var
-                    myreport: Report MyReport1;
-                    myrec: Record BookSalesLines;
+                    myreport: Report BSSI_Report_BookSales;
+                    myrec: Record BSSI_Table_BookSalesLines;
                 begin
-                    myrec.SetFilter("Person ID", '=%1', Rec."No.");
+                    myrec.SetFilter(BSSI_Field_PersonID, '=%1', Rec."No.");
                     myreport.SetTableView(myrec);
                 end;
             }

@@ -1,11 +1,11 @@
-page 50112 BooksPurchaseList
+page 50112 BSSI_Page_List_BookOrders
 {
     Caption = 'Book Sales Orders';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = BooksPurchase;
-    CardPageId = BooksPurchaseCardNonEditable;
+    SourceTable = BSSI_Table_BookOrders;
+    CardPageId = BSSI_Page_Card_BookOrdersNonEd;
     Editable = false;
 
     layout
@@ -14,20 +14,20 @@ page 50112 BooksPurchaseList
         {
             repeater(GroupName)
             {
-                field("Order ID"; Rec."Order ID")
+                field(BSSI_Field_OrderID; Rec.BSSI_Field_OrderID)
                 {
                     ApplicationArea = all;
                 }
-                field("Person ID"; rec."Person ID")
+                field(BSSI_Field_PersonID; rec.BSSI_Field_PersonID)
                 {
                     ApplicationArea = all;
                 }
 
-                field("Date of Purchase"; Rec."Date of Purchase")
+                field(BSSI_Field_DateOfPurchase; Rec.BSSI_Field_DateOfPurchase)
                 {
                     ApplicationArea = all;
                 }
-                field("Total Amount"; rec."Total Amount")
+                field(BSSI_Field_TotalAmount; rec.BSSI_Field_TotalAmount)
                 {
                     ApplicationArea = all;
                 }
