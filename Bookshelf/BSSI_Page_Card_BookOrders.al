@@ -22,7 +22,7 @@ page 50111 BSSI_Page_Card_BookOrders
                         text001: Label 'An order with Order ID : %1 is already present. Enter a unique Order ID.';
                     begin
                         if myRec.Get(rec.BSSI_Field_OrderID) then begin
-                            Message(text001,Rec.BSSI_Field_OrderID);
+                            Message(text001, Rec.BSSI_Field_OrderID);
                             Rec.BSSI_Field_OrderID := 'b-ord';
                         end;
                     end;
@@ -38,6 +38,16 @@ page 50111 BSSI_Page_Card_BookOrders
                     ToolTip = 'Enter the date of purchase.';
                 }
 
+                field(BSSI_Field_Status; Rec.BSSI_Field_Status)
+                {
+                    ApplicationArea = all;
+                    Importance = Promoted;
+                    QuickEntry = false;
+                    StyleExpr = StatusStyleTxt;
+                    Editable = false;
+                    ToolTip = 'Specifies whether the Order is open or confirmed';
+                }
+
             }
             group(BookSalesLines)
             {
@@ -48,22 +58,52 @@ page 50111 BSSI_Page_Card_BookOrders
                 }
             }
 
+
         }
     }
     actions
     {
         area(Processing)
         {
-            action("Confirm Purchase")
+            action(ConfirmOrder)
             {
+                Caption = 'Confirm Order';
                 ApplicationArea = All;
 
                 trigger OnAction()
                 begin
+                    Rec.BSSI_Field_Status := Rec.BSSI_Field_Status::"Order Confirmed";
+                    StatusStyleTxt := 'Strong';
+                    Rec.ConfirmPurchase(Rec);
+                    CurrPage.Lines.Page.PunchRecord();
+                end;
+            }
+            action(SaveOpenOrder)
+            {
+                Caption = 'Save Open Order';
+                ApplicationArea = All;
+
+                trigger OnAction()
+                begin
+                    Rec.BSSI_Field_Status := Rec.BSSI_Field_Status::Open;
+                    StatusStyleTxt := 'Open';
                     Rec.ConfirmPurchase(Rec);
                     CurrPage.Lines.Page.PunchRecord();
                 end;
             }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        if Rec.BSSI_Field_Status = Rec.BSSI_Field_Status::Open then begin
+            StatusStyleTxt := 'Favorable';
+        end else begin
+            StatusStyleTxt := 'Strong';
+        end;
+    end;
+
+    var
+        StatusStyleTxt: Text;
+
 }

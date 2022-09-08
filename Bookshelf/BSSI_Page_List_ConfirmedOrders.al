@@ -1,12 +1,13 @@
-page 50112 BSSI_Page_List_BookOrders
+page 50126 BSSI_Page_List_ConfirmedOrders
 {
-    Caption = 'Book Sales Orders';
+    Caption = 'Open Book Orders';
     PageType = List;
-    ApplicationArea = All;
+    //ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = BSSI_Table_BookOrders;
     CardPageId = BSSI_Page_Card_BookOrdersNonEd;
     Editable = false;
+    SourceTableView = where (BSSI_Field_status = const("Order Confirmed"));
 
     layout
     {

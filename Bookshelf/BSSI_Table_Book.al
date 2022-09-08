@@ -49,12 +49,12 @@ table 50100 BSSI_Table_Book
             Caption = 'Total Book Sales';
             FieldClass = FlowField;
             CalcFormula = sum(BSSI_Table_BookSalesLines.BSSI_Field_LineAmount where(BSSI_Field_BookNo = field(BSSI_Field_BookNo)));
-            trigger OnValidate()
-            var
-                myInt: Integer;
-            begin
-                Rec.BSSI_Field_AvailableInventory := Rec.BSSI_Field_InventoryCapacity - Rec.BSSI_Field_TotalSales;
-            end;
+            // trigger OnValidate()
+            // var
+            //     myInt: Integer;
+            // begin
+            //     Rec.BSSI_Field_AvailableInventory := Rec.BSSI_Field_InventoryCapacity - Rec.BSSI_Field_TotalSales;
+            // end;
         }
         field(9; BSSI_Field_InventoryCapacity; Integer)
         {
@@ -65,6 +65,11 @@ table 50100 BSSI_Table_Book
         {
             Caption = 'Available Inventory';
         }
+        // field(11; BSSI_Field_BookImage; media)
+        // {
+        //     Caption = 'Image';
+        //     DataClassification = CustomerContent;
+        // }
 
     }
 

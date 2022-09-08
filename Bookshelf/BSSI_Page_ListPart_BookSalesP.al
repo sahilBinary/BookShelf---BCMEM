@@ -1,6 +1,6 @@
 page 50118 BSSI_Page_ListPart_BookSalesP
 {
-    Caption = 'Book Sales Lines Perm';
+    Caption = ' ';
     PageType = ListPart;
     SourceTable = BSSI_Table_BookSalesLines;
     UsageCategory = Administration;

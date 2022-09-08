@@ -27,6 +27,24 @@ table 50104 BSSI_Table_BookOrders
             FieldClass = FlowField;
             CalcFormula = sum(BSSI_Table_BookSalesLines.BSSI_Field_LineAmount where(BSSI_Field_OrderID = field(BSSI_Field_OrderID)));
         }
+        field(5; BSSI_Field_PersonImage; Media)
+        {
+            Caption = 'Customer Image';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Customer.Image where("No." = field(BSSI_Field_PersonID)));
+        }
+        field(6; BSSI_Field_TotalQuantity; Integer)
+        {
+            Caption = 'Total Quantity';
+            FieldClass = FlowField;
+            CalcFormula = sum(BSSI_Table_BookSalesLines.BSSI_Field_Quantity where(BSSI_Field_OrderID = field(BSSI_Field_OrderID)));
+        }
+        field(120; BSSI_Field_Status; Enum "Book Sales Status")
+        {
+            Caption = 'Status';
+            //Editable = false;
+            DataClassification = CustomerContent;
+        }
 
     }
 
@@ -48,5 +66,6 @@ table 50104 BSSI_Table_BookOrders
         punch1.Insert();
 
     end;
+
 
 }

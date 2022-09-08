@@ -15,6 +15,7 @@ page 50116 BSSI_Page_ListPart_BookSales
                 field(BSSI_Field_OrderID; rec.BSSI_Field_OrderID)
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field(BSSI_Field_PersonID; Rec.BSSI_Field_PersonID)
                 {
@@ -52,6 +53,7 @@ page 50116 BSSI_Page_ListPart_BookSales
                     begin
                         myRec.Get(Rec.BSSI_Field_BookNo);
                         rec.BSSI_Field_LineAmount := rec.BSSI_Field_Quantity * myRec.BSSI_Field_Price;
+                        
                     end;
                 }
                 field(BSSI_Field_LineAmount; Rec.BSSI_Field_LineAmount)
