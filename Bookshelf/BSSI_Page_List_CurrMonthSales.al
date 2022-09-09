@@ -1,8 +1,9 @@
-page 50117 BSSI_Page_List_BookSales
+page 50127 BSSI_Page_List_CurrMonthSales
 {
-    Caption = 'Book Sales Lines';
+    Caption = 'Book Sales For Current Month';
     PageType = List;
     SourceTable = BSSI_Table_BookSalesLines;
+    SourceTableView = where (BSSI_Field_CurrentMonthCheck = const(true));
     UsageCategory = Administration;
     ApplicationArea = All;
     //Editable = false;

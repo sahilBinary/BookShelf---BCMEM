@@ -14,7 +14,26 @@ page 50124 BSSI_Page_CardPart_BookRoleCen
             {
                 Caption = ' ';
                 CuegroupLayout = Wide;
+
+                field(BSSI_Field_BookSalesCurrMonth; Rec.BSSI_Field_BookSalesCurrMonth)
+                {
+                    ApplicationArea = All;
+                    DrillDownPageId = BSSI_Page_List_CurrMonthSales;
+                }
+
+                field(BSSI_Field_BookSalesToday;Rec.BSSI_Field_BookSalesToday)
+                {
+                    ApplicationArea = All;
+                    DrillDownPageId = BSSI_Page_List_TodaySales;
+                }
+
                 field(BSSI_Field_TotalBookSales; Rec.BSSI_Field_TotalBookSales)
+                {
+                    ApplicationArea = All;
+                    DrillDownPageId = BSSI_Page_List_BookSales;
+                }
+
+                field(BSSI_Field_PotentialSales; Rec.BSSI_Field_PotentialSales)
                 {
                     ApplicationArea = All;
                     DrillDownPageId = BSSI_Page_List_BookSales;
@@ -28,7 +47,7 @@ page 50124 BSSI_Page_CardPart_BookRoleCen
                 field(BSSI_Field_TotalBooksSold; Rec.BSSI_Field_TotalBooksSold)
                 {
                     ApplicationArea = All;
-                    DrillDownPageId = BSSI_Page_List_Book;
+                    DrillDownPageId = BSSI_Page_List_BookSales;
                 }
                 field(BSSI_Field_OrdersPlaced; Rec.BSSI_Field_OrdersPlaced)
                 {

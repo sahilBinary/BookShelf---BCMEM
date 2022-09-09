@@ -34,14 +34,15 @@ page 50100 BSSI_Page_Card_Book
                         Rec.BSSI_Field_AvailableInventory := Rec.BSSI_Field_InventoryCapacity - Rec.BSSI_Field_QuantitySold;
                     end;
                 }
-                // field(BSSI_Field_QuantitySold;Rec.BSSI_Field_QuantitySold)
-                // {
-                //     ApplicationArea = All;
-                // }
-                // field(BSSI_Field_AvailableInventory;Rec.BSSI_Field_AvailableInventory)
-                // {
-                //     ApplicationArea = All;
-                // }
+                field(BSSI_Field_QuantitySold;Rec.BSSI_Field_QuantitySold)
+                {
+                    ApplicationArea = All;
+                }
+                field(BSSI_Field_AvailableInventory;Rec.BSSI_Field_AvailableInventory)
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
             }
 
             group(Details)

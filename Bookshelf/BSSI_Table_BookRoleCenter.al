@@ -12,7 +12,8 @@ table 50109 BSSI_Table_BookRoleCenter
         {
             Caption = 'Books Sold';
             FieldClass = FlowField;
-            CalcFormula = sum(BSSI_Table_BookSalesLines.BSSI_Field_Quantity);
+            CalcFormula = sum(BSSI_Table_BookSalesLines.BSSI_Field_Quantity where(BSSI_Field_Status = const("Order Confirmed")));
+            //CalcFormula = sum(BSSI_Table_Book.BSSI_Field_QuantitySold);
         }
         field(3; BSSI_Field_OrdersPlaced; Integer)
         {
@@ -39,13 +40,34 @@ table 50109 BSSI_Table_BookRoleCenter
             AutoFormatType = 11;
             DecimalPlaces = 0 : 0;
             FieldClass = FlowField;
-            CalcFormula = sum(BSSI_Table_BookSalesLines.BSSI_Field_LineAmount);
+            CalcFormula = sum(BSSI_Table_BookSalesLines.BSSI_Field_LineAmount where(BSSI_Field_Status = const("Order Confirmed")));
         }
         field(7; BSSI_Field_BookSalesToday; Decimal)
         {
-            Caption = 'Book Sales Today ($)';
-            // FieldClass = FlowField;
-            // CalcFormula = sum(BSSI_Table_BookSalesLines.BSSI_Field_LineAmount where (BSSI_Field_DateOfPurchase = const(mydate)));
+            Caption = 'Book Sales Today';
+            AutoFormatExpression = GetAmountFormat;
+            AutoFormatType = 11;
+            DecimalPlaces = 0 : 0;
+            FieldClass = FlowField;
+            CalcFormula = sum(BSSI_Table_BookSalesLines.BSSI_Field_LineAmount where(BSSI_Field_Status = const("Order Confirmed"),BSSI_Field_TodayCheck = const(true)));
+        }
+        field(8; BSSI_Field_BookSalesCurrMonth; Decimal)
+        {
+            Caption = 'Book Sales This Month';
+            AutoFormatExpression = GetAmountFormat;
+            AutoFormatType = 11;
+            DecimalPlaces = 0 : 0;
+            FieldClass = FlowField;
+            CalcFormula = sum(BSSI_Table_BookSalesLines.BSSI_Field_LineAmount where(BSSI_Field_Status = const("Order Confirmed"), BSSI_Field_CurrentMonthCheck = const(true)));
+        }
+        field(9; BSSI_Field_PotentialSales; Decimal)
+        {
+            Caption = 'Potential Book Sales';
+            AutoFormatExpression = GetAmountFormat;
+            AutoFormatType = 11;
+            DecimalPlaces = 0 : 0;
+            FieldClass = FlowField;
+            CalcFormula = sum(BSSI_Table_BookSalesLines.BSSI_Field_LineAmount where(BSSI_Field_Status = const(Open)));
         }
 
     }
@@ -98,5 +120,16 @@ table 50109 BSSI_Table_BookRoleCenter
 
     var
         mydate: Date;
+        myd: text;
+
+    trigger OnInsert()
+    var
+        myInt: Integer;
+    begin
+        mydate := today;
+    end;
+
+
+
 
 }

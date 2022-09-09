@@ -1,8 +1,9 @@
-page 50117 BSSI_Page_List_BookSales
+page 50128 BSSI_Page_List_TodaySales
 {
-    Caption = 'Book Sales Lines';
+    Caption = 'Book Sales For Today';
     PageType = List;
     SourceTable = BSSI_Table_BookSalesLines;
+    SourceTableView = where (BSSI_Field_TodayCheck = const(true));
     UsageCategory = Administration;
     ApplicationArea = All;
     //Editable = false;

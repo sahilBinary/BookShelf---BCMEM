@@ -17,15 +17,18 @@ page 50115 BSSI_Page_Card_BookOrdersNonEd
                 field(BSSI_Field_OrderID; Rec.BSSI_Field_OrderID)
                 {
                     ApplicationArea = all;
+                    Editable = false;
                 }
 
                 field(BSSI_Field_PersonID; Rec.BSSI_Field_PersonID)
                 {
+                    Editable = false;
                     ApplicationArea = all;
                     ToolTip = 'Enter the ID of the customer : Code[20]';
                 }
                 field(BSSI_Field_DateOfPurchase; Rec.BSSI_Field_DateOfPurchase)
                 {
+                    Editable = false;
                     ApplicationArea = all;
                     ToolTip = 'Enter the date of purchase.';
                 }
@@ -58,6 +61,7 @@ page 50115 BSSI_Page_Card_BookOrdersNonEd
             {
                 Caption = 'Confirm Order';
                 ApplicationArea = All;
+                Visible = isvisible;
                 trigger OnAction()
                 begin
                     Rec.BSSI_Field_Status := Rec.BSSI_Field_Status::"Order Confirmed";
@@ -68,7 +72,7 @@ page 50115 BSSI_Page_Card_BookOrdersNonEd
             {
                 Caption = 'Reopen Order';
                 ApplicationArea = All;
-
+                Visible = not isvisible;
                 trigger OnAction()
                 begin
                     Rec.BSSI_Field_Status := Rec.BSSI_Field_Status::Open;
@@ -89,6 +93,17 @@ page 50115 BSSI_Page_Card_BookOrdersNonEd
 
     var
         StatusStyleTxt: Text;
+        isvisible: Boolean;
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        if rec.BSSI_Field_Status = rec.BSSI_Field_Status::Open then begin
+            isvisible := true;
+        end else begin
+            isvisible := false;
+        end;
+        ;
+    end;
 
 }
 
