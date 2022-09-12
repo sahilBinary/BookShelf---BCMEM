@@ -21,7 +21,7 @@ page 50124 BSSI_Page_CardPart_BookRoleCen
                     DrillDownPageId = BSSI_Page_List_CurrMonthSales;
                 }
 
-                field(BSSI_Field_BookSalesToday;Rec.BSSI_Field_BookSalesToday)
+                field(BSSI_Field_BookSalesToday; Rec.BSSI_Field_BookSalesToday)
                 {
                     ApplicationArea = All;
                     DrillDownPageId = BSSI_Page_List_TodaySales;
@@ -66,6 +66,27 @@ page 50124 BSSI_Page_CardPart_BookRoleCen
                 }
             }
         }
+    }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(UpdateCurrentStats)
+            {
+                Caption = 'Refresh Data';
+                Image = Refresh;
+                ApplicationArea = All;
+
+                trigger OnAction()
+                var
+                    mycode:Codeunit BSSI_Codeunit_Customer;
+                begin
+                    mycode.UpdateDateCheckFields();
+                end;
+            }
+        }
+
     }
 
 

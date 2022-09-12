@@ -51,13 +51,13 @@ page 50117 BSSI_Page_List_BookSales
                 {
                     ApplicationArea = All;
                     Editable = false;
-                    Visible = false;
+                    //Visible = false;
                 }
                 field(BSSI_Field_TodayCheck; Rec.BSSI_Field_TodayCheck)
                 {
                     ApplicationArea = All;
                     Editable = false;
-                    Visible = false;
+                    //Visible = false;
                 }
 
             }

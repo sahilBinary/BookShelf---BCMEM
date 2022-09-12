@@ -83,6 +83,18 @@ page 50113 BSSI_Page_Card_Test
                                             '', FileName);
                 end;
             }
+            action(OpenRoleCenterPage)
+            {
+                ApplicationArea = All;
+                Caption = 'Open Role Center Page';
+                trigger OnAction()
+                var
+                    myPage:Page "Business Manager Role Center";
+                    mycode:Codeunit BSSI_Codeunit_Customer;
+                begin
+                    mycode.UpdateDateCheckFields();
+                end;
+            }
         }
     }
     var
